@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Emilien Goy</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : une feuille de plan technique. Barre de navigation fixe, en-tête avec cartouche, puis trois rubriques sur une colonne de lecture. */
+:root {
+  --paper: #EDF1F4;
+  --sheet: #F8FAFB;
+  --ink: #15222C;
+  --steel: #566876;
+  --line: #B7C2CB;
+  --grid: rgba(86, 104, 118, 0.10);
+  --accent: #1B5C9E;
+  --accent-soft: rgba(27, 92, 158, 0.10);
+  --signal: #C4581A;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1922; --sheet: #14222E; --ink: #E4EBF1; --steel: #93A6B5; --line: #32475A;
+    --grid: rgba(147, 166, 181, 0.08); --accent: #74B4F2; --accent-soft: rgba(116, 180, 242, 0.12);
+    --signal: #F0935A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1922; --sheet: #14222E; --ink: #E4EBF1; --steel: #93A6B5; --line: #32475A;
+  --grid: rgba(147, 166, 181, 0.08); --accent: #74B4F2; --accent-soft: rgba(116, 180, 242, 0.12);
+  --signal: #F0935A; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Navigation */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: var(--sheet);
+  border-bottom: 1px solid var(--line);
+  padding-inline: 16px;
+}
+.nav-inner {
+  max-width: 980px; margin-inline: auto;
+  display: flex; align-items: center; gap: 8px 20px; flex-wrap: wrap;
+  padding-block: 10px;
+}
+.brand {
+  font-family: var(--display); font-weight: 700; font-size: 1.25rem;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none; margin-right: auto;
+}
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.nav li a, .nav li span {
+  display: block; padding: 5px 10px;
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase;
+  text-decoration: none; border: 1px solid transparent;
+}
+.nav li a { color: var(--ink); }
+.nav li a:hover { border-color: var(--line); }
+.nav li a[aria-current="page"] { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.nav li span { color: var(--steel); opacity: 0.75; }
+.nav li span small { font-size: 0.625rem; margin-left: 4px; }
+
+/* Structure */
+.wrap { max-width: 980px; margin-inline: auto; padding-inline: 16px; padding-block: 40px 64px; display: flex; flex-direction: column; gap: 48px; }
+
+/* En-tête */
+.head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: end; }
+.eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--steel); margin: 0 0 10px; }
+h1 {
+  font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(3rem, 9vw, 5.5rem); line-height: 0.92; letter-spacing: 0.01em;
+  margin: 0; text-wrap: balance;
+}
+h1 em { font-style: normal; color: var(--accent); }
+.lede { margin: 18px 0 0; max-width: 46ch; color: var(--steel); font-size: 1.0625rem; }
+
+/* Cartouche */
+.cartouche { margin: 0; background: var(--sheet); border: 1.5px solid var(--ink); display: grid; grid-template-columns: 1fr 1fr; }
+.cartouche div { padding: 8px 12px; border-bottom: 1px solid var(--line); min-width: 0; }
+.cartouche div:nth-child(odd) { border-right: 1px solid var(--line); }
+.cartouche div.full { grid-column: 1 / -1; border-right: 0; }
+.cartouche div:nth-last-child(-n+2) { border-bottom: 0; }
+.cartouche dt { font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--steel); }
+.cartouche dd { margin: 2px 0 0; font-weight: 500; font-size: 0.9375rem; line-height: 1.35; }
+.cartouche dd.big { font-family: var(--display); font-weight: 600; font-size: 1.375rem; text-transform: uppercase; letter-spacing: 0.03em; }
+
+/* Rubriques */
+.rubrique { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 12px 32px; border-top: 1.5px solid var(--ink); padding-top: 20px; }
+.rubrique h2 { font-family: var(--display); font-weight: 600; font-size: 1.75rem; line-height: 1.05; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; }
+.rubrique .tag { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); margin: 6px 0 0; }
+.rubrique .texte { display: flex; flex-direction: column; gap: 14px; max-width: 65ch; }
+.rubrique p { margin: 0; }
+
+/* Ligne de parcours */
+.ligne { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); max-width: none; }
+.ligne li { position: relative; padding: 22px 10px 0 0; }
+.ligne li::before { content: ""; position: absolute; top: 6px; left: 0; right: 0; height: 2px; background: var(--ink); }
+.ligne li.futur::before { background: repeating-linear-gradient(90deg, var(--steel) 0 6px, transparent 6px 11px); }
+.ligne li::after { content: ""; position: absolute; top: 0; left: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--ink); border: 2px solid var(--ink); }
+.ligne li.ici::after { background: var(--signal); border-color: var(--signal); box-shadow: 0 0 0 4px var(--accent-soft); }
+.ligne li.futur::after { background: var(--paper); border-color: var(--steel); }
+.ligne .quand { display: block; font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--steel); }
+.ligne .quoi { display: block; font-weight: 600; font-size: 0.9375rem; line-height: 1.3; }
+.ligne .ou { display: block; font-size: 0.8125rem; color: var(--steel); line-height: 1.35; }
+
+.repere { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 0; padding: 0; list-style: none; }
+.repere li { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.04em; padding: 4px 10px; border: 1px solid var(--line); background: var(--sheet); }
+
+footer { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--steel); border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; }
+
+@media (max-width: 760px) {
+  .head { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .rubrique { grid-template-columns: minmax(0, 1fr); }
+  .ligne { grid-template-columns: minmax(0, 1fr); }
+  .ligne li { padding: 0 0 18px 28px; }
+  .ligne li::before { top: 6px; bottom: 0; left: 6px; right: auto; width: 2px; height: auto; }
+  .ligne li.futur::before { background: repeating-linear-gradient(180deg, var(--steel) 0 6px, transparent 6px 11px); }
+  .ligne li:last-child::before { display: none; }
+  .ligne li::after { top: 4px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Sommaire du portfolio">
+  <div class="nav-inner">
+    <a class="brand" href="#presentation">E. Goy</a>
+    <ul>
+      <li><a href="#presentation" aria-current="page">Présentation</a></li>
+      <li><span>Compétences<small>à venir</small></span></li>
+      <li><span>SAÉ<small>à venir</small></span></li>
+      <li><span>Alternance<small>à venir</small></span></li>
+      <li><span>Transversales<small>à venir</small></span></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="presentation">
+
+  <header class="head">
+    <div>
+      <p class="eyebrow">Portfolio de compétences · BUT2</p>
+      <h1>Emilien <em>Goy</em></h1>
+      <p class="lede">Étudiant en Génie Mécanique et Productique à l'IUT de Metz, en alternance à la SNCF.</p>
+    </div>
+    <dl class="cartouche" aria-label="Cartouche du portfolio">
+      <div class="full"><dt>Titre</dt><dd class="big">Présentation personnelle</dd></div>
+      <div><dt>Formation</dt><dd>BUT GMP, parcours Innovation pour l'Industrie</dd></div>
+      <div><dt>Établissement</dt><dd>IUT de Metz, Université de Lorraine</dd></div>
+      <div><dt>Entreprise</dt><dd>SNCF, secteur Metz–Thionville</dd></div>
+      <div><dt>Année</dt><dd>2026-27</dd></div>
+      <div><dt>Rédigé par</dt><dd>E. Goy</dd></div>
+      <div><dt>Folio</dt><dd>1 / 5</dd></div>
+    </dl>
+  </header>
+
+  <section class="rubrique" aria-labelledby="t-parcours">
+    <div>
+      <h2 id="t-parcours">Parcours et formation</h2>
+      <p class="tag">Mon chemin jusqu'ici</p>
+    </div>
+    <div class="texte">
+      <p>Après un bac général, j'ai choisi le BUT Génie Mécanique et Productique à l'IUT de Metz parce que je voulais une formation où l'on conçoit des pièces et où on les fabrique vraiment, pas seulement sur le papier.</p>
+      <p>J'ai rejoint la SNCF en alternance sur le secteur Metz–Thionville. Je partage donc mon temps entre les cours et le terrain, ce qui me permet de confronter ce que j'apprends à l'IUT à des besoins réels de maintenance et d'organisation.</p>
+      <ol class="ligne" aria-label="Étapes du parcours">
+        <li><span class="quand">Avant 2025</span><span class="quoi">Bac général</span></li>
+        <li><span class="quand">2025-26</span><span class="quoi">BUT1 GMP</span><span class="ou">IUT de Metz</span></li>
+        <li class="ici"><span class="quand">2026-27 · en cours</span><span class="quoi">BUT2 GMP en alternance</span><span class="ou">SNCF, Metz–Thionville</span></li>
+        <li class="futur"><span class="quand">Ensuite</span><span class="quoi">École d'ingénieur</span><span class="ou">Bac+5, en alternance</span></li>
+        <li class="futur"><span class="quand">Objectif</span><span class="quoi">Spécialisation</span><span class="ou">Bac+6</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="rubrique" aria-labelledby="t-interets">
+    <div>
+      <h2 id="t-interets">Centres d'intérêt</h2>
+      <p class="tag">En dehors des cours</p>
+    </div>
+    <div class="texte">
+      <p>Je pratique la course à pied de façon régulière, avec le semi-marathon comme distance favorite. Je construis moi-même mes plans d'entraînement, séances de fractionné comprises, et je suis ma progression sortie après sortie.</p>
+      <p>Ce sport m'a appris à me fixer un objectif chiffré, à m'y préparer sur plusieurs mois et à rester régulier même quand la motivation baisse. Je retrouve la même logique dans un projet technique : on avance par étapes, on mesure, on ajuste.</p>
+      <ul class="repere" aria-label="Repères">
+        <li>Semi-marathon de Thionville</li>
+        <li>Repère visé : 1 h 30</li>
+        <li>Environ 20 km par semaine</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubrique" aria-labelledby="t-projet">
+    <div>
+      <h2 id="t-projet">Projet professionnel</h2>
+      <p class="tag">Où je veux aller</p>
+    </div>
+    <div class="texte">
+      <p>Mon projet est clair : devenir ingénieur à la SNCF. Après le BUT, je souhaite intégrer une école d'ingénieur en alternance, toujours au sein de l'entreprise, puis compléter ce bac+5 par une année de spécialisation.</p>
+      <p>Le ferroviaire m'attire parce que les décisions techniques y ont des conséquences directes sur la sécurité et sur la disponibilité des trains. L'alternance me montre chaque semaine ce que ce métier demande, et elle confirme mon envie d'y rester.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Portfolio GMP 2026-27</span>
+    <span>Emilien Goy · IUT de Metz</span>
+  </footer>
+</main>
+</body>
+</html>
